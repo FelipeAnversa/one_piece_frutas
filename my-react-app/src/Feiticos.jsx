@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
+import api from './services/api'
 
 export default function Feiticos () {
     const [feiticos, setFeiticos] = useState(null);
@@ -38,7 +38,7 @@ export default function Feiticos () {
 
     async function pegarFeiticos() {
         try {
-            const API = await axios.get('https://hp-api.onrender.com/api/spells');
+            const API = await api.get('/spells');
             const data = API.data;
             return data;
         } catch (error) {
