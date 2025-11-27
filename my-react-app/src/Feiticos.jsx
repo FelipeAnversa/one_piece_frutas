@@ -15,7 +15,7 @@ export default function Feiticos () {
     };
 
     return (
-        <div>
+        <div id='home'>
             <>
                 <h1>Name: </h1>
                 <select onChange={selecionar}>

@@ -1,5 +1,6 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 h1 {
@@ -7,6 +8,26 @@ h1 {
 }
 
 h2 {
-    color: gray;
+    color: rgb(236, 0, 0);
     font-weight: 2000;
+}
+
+select {
+    padding: 20px;
+    font-size: 20px;
+}
+
+select:hover {
+    background-color: lightgray;
+}
+
+#home {
+    border: 4px solid black;
+    padding: 10px;
+    margin: 0 auto;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
