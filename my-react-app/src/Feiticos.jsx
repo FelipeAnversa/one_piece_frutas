@@ -14,11 +14,26 @@ export default function Feiticos () {
         setSelecionado(feiticoSelecionado);
     };
 
+    const styles = {
+        container: {
+            fontFamily: 'Arial, Helvetica, sans-serif',
+            textAlign: 'center',
+            border: '4px solid black',
+            padding: '10px',
+            margin: '0 auto',
+            width: '500px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column'
+        }
+    };
+
     return (
-        <div id='home'>
+        <div style={styles.container}>
             <>
-                <h1>Name: </h1>
-                <select onChange={selecionar}>
+                <h1 style={{color: 'black'}}>Name: </h1>
+                <select onChange={selecionar} style={{padding: '20px', fontSize: '20px', cursor: 'pointer'}} onMouseEnter={(e) => e.target.style.backgroundColor = 'lightgray'} onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}>
                     <option value="">Select a option:</option>
                     {feiticos && feiticos.map(feitico => (
                         <option key={feitico.id} value={feitico.name}>
@@ -28,8 +43,8 @@ export default function Feiticos () {
                 </select>
                 {selecionado && (
                     <div>
-                        <h1>Description: </h1>
-                        <h2>{selecionado.description}</h2>
+                        <h1 style={{color: 'black'}}>Description: </h1>
+                        <h2 style={{color: 'rgb(236, 0, 0)', fontWeight: '2000'}}>{selecionado.description}</h2>
                     </div>
                 )}
             </>
