@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
 import api from './services/api'
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { Typography } from '@mui/material';
 
 export default function Feiticos () {
     const [feiticos, setFeiticos] = useState(null);
@@ -14,41 +20,52 @@ export default function Feiticos () {
         setSelecionado(feiticoSelecionado);
     };
 
-    const styles = {
-        container: {
-            fontFamily: 'Arial, Helvetica, sans-serif',
-            textAlign: 'center',
-            border: '4px solid black',
-            padding: '10px',
-            margin: '0 auto',
-            width: '500px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
-        }
-    };
 
     return (
-        <div style={styles.container}>
-            <>
-                <h1 style={{color: 'black'}}>Name: </h1>
-                <select onChange={selecionar} style={{padding: '20px', fontSize: '20px', cursor: 'pointer'}} onMouseEnter={(e) => e.target.style.backgroundColor = 'lightgray'} onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}>
-                    <option value="">Select a option:</option>
+        <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth margin='0 0 20px 0'>
+                <InputLabel id='label'>Name</InputLabel>
+                <Select 
+                    labelId='label'
+                    id='select'
+                    label='Name'
+                    onChange={selecionar}
+                >
+                    <MenuItem value="">Select a option:</MenuItem>
                     {feiticos && feiticos.map(feitico => (
-                        <option key={feitico.id} value={feitico.name}>
+                        <MenuItem key={feitico.id} value={feitico.name}>
                             {`${feitico.name}`}
-                        </option>
+                        </MenuItem>
                     ))}
-                </select>
-                {selecionado && (
-                    <div>
-                        <h1 style={{color: 'black'}}>Description: </h1>
-                        <h2 style={{color: 'rgb(236, 0, 0)', fontWeight: '2000'}}>{selecionado.description}</h2>
-                    </div>
-                )}
-            </>
-        </div>
+                </Select>
+            </FormControl>
+            <br />
+            {selecionado && (
+                <div>
+                    <Typography 
+                        marginTop={5}
+                        variant="h5" 
+                        component="div"
+                        fontWeight= 'fontWeightBold'
+                        sx={{ fontFamily: 'Arial', fontSize: 50 }}
+                    >
+                        Description:
+                    </Typography>
+                    <Typography 
+                        variant="h5" 
+                        component="div"
+                        fontWeight= 'fontWeightBold'
+                        sx={{ 
+                        fontFamily: 'Arial',
+                        fontSize: 50, 
+                        color: 'rgb(236, 0, 0)'
+                        }}
+                    >
+                        {selecionado.description}
+                    </Typography>
+                </div>
+            )}
+        </Box>
     );
 
     async function pegarFeiticos() {
